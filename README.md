@@ -24,6 +24,7 @@ scripts/                   Local helper scripts
 sources/                   Original input documents and extracted excerpts
 knowledge/                 Requirements, glossary, style, risk rules
 plan/                      Outline, response matrix, section task index
+governance/                Directive, decision, and escalation ledgers
 tasks/                     Agent task packages
 context/                   Task evidence packs prepared for agents
 manuscript/                Diff-friendly manuscript source
@@ -77,3 +78,13 @@ Layer 3: Restricted raw sources  -> sources/raw/
 ```
 
 Writers start from Layer 1. If evidence is insufficient, they may use Layer 2 only when the task allows it. They should not read Layer 3 unless explicitly authorized by the task.
+
+## Governance Ledgers
+
+The orchestrator compiles sponsor instructions and agent feedback through three project ledgers:
+
+- `governance/directives/`: instructions that should flow down into tasks, context packs, acceptance criteria, and review checks.
+- `governance/decisions/`: explicit decisions that resolve high-responsibility questions or conflicts.
+- `governance/escalations/`: structured events that should float up for triage, evidence, review, or human judgment.
+
+Reusable schemas and starter templates live under `.agent/schemas/` and `.agent/templates/`.

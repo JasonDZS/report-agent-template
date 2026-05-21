@@ -1,0 +1,44 @@
+id: E-0001
+type: decision_required
+status: pending_human
+severity: high
+title: "Availability commitment needs sponsor decision"
+summary: "A section may need to mention system availability, but no approved evidence supports a fixed percentage."
+raised_by:
+  kind: reviewer
+  task_id: T-0001
+  name: ""
+  ref: reviews/T-0001-review.yaml
+blocking: true
+context:
+  requirements:
+    - RQ-014
+  directives: []
+  decisions: []
+  tasks:
+    - T-0001
+  sections:
+    - "3.2"
+  files:
+    - manuscript/sections/03/02-system-architecture.md
+  source_refs: []
+  review_findings: []
+options:
+  - id: A
+    label: "Use conditional availability wording"
+    description: "Avoid a fixed percentage and describe the reliability approach."
+    risk: low
+    impact: "Keeps the draft defensible with current evidence."
+    requires_user_input: false
+  - id: B
+    label: "Commit to a fixed availability percentage"
+    description: "Use a numeric target after the sponsor provides evidence."
+    risk: high
+    impact: "Creates a stronger but higher-risk commitment."
+    requires_user_input: true
+recommended_option_id: A
+recommendation: "Choose option A unless supporting evidence is supplied."
+requested_response: "Please choose whether to use conditional wording or provide evidence for a fixed availability target."
+created_at: "2026-05-21T00:00:00Z"
+updated_at: "2026-05-21T00:00:00Z"
+notes: ""

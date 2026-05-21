@@ -1,0 +1,36 @@
+id: D-0001
+type: style_constraint
+source:
+  kind: user
+  name: ""
+  ref: ""
+status: active
+priority: high
+scope:
+  document: true
+applies_to:
+  roles:
+    - chief-editor
+    - section-writer
+    - reviewer
+  stages:
+    - planning
+    - writing
+    - review
+content: "Use formal proposal language and avoid unsupported promotional wording."
+rationale: "The sponsor wants the manuscript to read like a formal bid document."
+enforcement:
+  - channel: task_constraint
+    text: "Write in formal proposal language and avoid promotional claims."
+    required: true
+  - channel: reviewer_check
+    text: "Flag promotional or unsupported wording as a style or risk finding."
+    required: true
+conflict_policy: raise_escalation
+related_requirements: []
+related_decisions: []
+related_escalations: []
+supersedes: []
+created_at: "2026-05-21T00:00:00Z"
+updated_at: "2026-05-21T00:00:00Z"
+notes: ""
