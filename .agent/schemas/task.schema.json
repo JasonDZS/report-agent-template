@@ -34,10 +34,22 @@
     },
     "status": {
       "type": "string",
-      "enum": ["planned", "assigned", "running", "drafted", "reviewed", "needs_revision", "approved", "blocked", "merged"]
+      "enum": [
+        "planned",
+        "assigned",
+        "running",
+        "committed",
+        "machine_validated",
+        "review_requested",
+        "needs_revision",
+        "approved",
+        "merged",
+        "failed"
+      ]
     },
     "branch": { "type": "string" },
     "base_branch": { "type": "string", "default": "main" },
+    "worktree": { "type": "string" },
     "objective": { "type": "string", "minLength": 1 },
     "background": { "type": "string" },
     "requirements": {
@@ -72,6 +84,10 @@
       ]
     },
     "allowed_outputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "constraints": {
       "type": "array",
       "items": { "type": "string" }
     },

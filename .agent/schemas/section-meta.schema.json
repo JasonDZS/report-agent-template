@@ -3,33 +3,52 @@
   "$id": "https://example.local/schemas/section-meta.schema.json",
   "title": "Section Metadata",
   "type": "object",
-  "required": ["section_id", "title", "status", "requirements"],
+  "required": ["section_id", "title", "status", "covered_requirements"],
   "properties": {
     "section_id": { "type": "string" },
     "title": { "type": "string" },
     "status": {
       "type": "string",
-      "enum": ["planned", "drafted", "reviewed", "approved", "locked", "needs_revision"]
+      "enum": [
+        "planned",
+        "drafting",
+        "drafted",
+        "machine_reviewed",
+        "human_review_required",
+        "approved",
+        "needs_revision",
+        "locked",
+        "assembled"
+      ]
     },
-    "requirements": {
+    "author_task": { "type": "string" },
+    "covered_requirements": {
       "type": "array",
       "items": { "type": "string" }
     },
-    "sources": {
+    "source_refs": {
       "type": "array",
       "items": { "type": "string" }
     },
-    "tables": {
+    "risk_notes": {
       "type": "array",
       "items": { "type": "string" }
     },
-    "figures": {
-      "type": "array",
-      "items": { "type": "string" }
+    "assets": {
+      "type": "object",
+      "properties": {
+        "tables": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "images": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
     },
-    "last_task_id": { "type": "string" },
     "review_status": { "type": "string" }
   },
   "additionalProperties": true
 }
-

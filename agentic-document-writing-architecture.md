@@ -186,7 +186,8 @@ Section Writer 负责局部内容生产。
 - `manuscript/sections/<section-id>.md`
 - `manuscript/sections/<section-id>.meta.yaml`
 - `runs/<task-id>/questions.yaml`
-- `runs/<task-id>/notes.md`
+- `runs/<task-id>/evidence_requests.yaml`
+- `runs/<task-id>/summary.md`
 
 ### 4.6 Reviewer Agent
 
@@ -242,7 +243,7 @@ Assembler 是可选角色，负责组装和导出。
 - `assembly/manuscript.md`
 - `assembly/manuscript.docx`
 - `assembly/manuscript.pdf`
-- `assembly/build_manifest.json`
+- `assembly/build-manifest.yaml`
 
 ## 5. 系统组件
 
@@ -372,9 +373,13 @@ repo/
       image-brief.schema.json
 
   sources/
-    tender.pdf
-    product_manual.docx
-    company_profile.md
+    raw/
+      tender.pdf
+      product_manual.docx
+      company_profile.md
+    excerpts/
+      tender-chapter-3.md
+      product-architecture.md
 
   knowledge/
     requirements.yaml
@@ -416,15 +421,16 @@ repo/
       AGENT_CONTEXT.md
       stdout.log
       stderr.log
-      manifest.json
-      notes.md
+      manifest.yaml
+      summary.md
       questions.yaml
+      evidence_requests.yaml
 
   assembly/
     manuscript.md
     manuscript.docx
     manuscript.pdf
-    build_manifest.json
+    build-manifest.yaml
 ```
 
 ## 7. 指令环境设计
@@ -467,6 +473,27 @@ Layer 3: 原始资料仓库
 `knowledge/source-index.yaml` 和 `sources/excerpts/` 是受控自助检索层。执行 Agent 在证据包不足时，可以先查索引和摘录，补充必要证据，并在执行摘要中记录新增使用的 source ID。
 
 `sources/raw/` 是原始资料仓库。通常只有 Requirement Analyst、Chief Editor 或被明确授权的检索任务可以读取。Section Writer 默认不直接读取原始资料；如果证据包和摘录层都不足，应写入 `runs/<task-id>/evidence_requests.yaml` 或 `questions.yaml`，由 Chief Editor 派发补证据任务。
+
+Context pack 的主格式推荐使用 Markdown，并在文件顶部加入 YAML frontmatter。Markdown 便于 Agent 阅读，frontmatter 便于 Orchestrator 做基础校验和索引。
+
+```markdown
+---
+task_id: T-0032
+purpose: "撰写第 3.2 节系统总体架构"
+must_use:
+  - source_id: RQ-014
+    summary: "系统可靠性要求"
+search_hints:
+  - "architecture"
+known_gaps: []
+forbidden_claims:
+  - "不得承诺未被资料支持的可用性指标"
+---
+
+# Context Pack: T-0032
+
+...
+```
 
 这个设计的原则是：
 
@@ -598,6 +625,7 @@ summary: >
 
 findings:
   - severity: high
+    category: unsupported_claim
     file: manuscript/sections/03/02-system-architecture.md
     line: 42
     issue: "文中承诺 99.99% 可用性，但上下文资料中没有依据。"
@@ -606,6 +634,7 @@ findings:
       - RQ-014
 
   - severity: medium
+    category: requirement_gap
     file: manuscript/sections/03/02-system-architecture.md
     issue: "未明确响应 RQ-017 中关于国产化适配的要求。"
     suggestion: "增加对操作系统、数据库、中间件和硬件平台适配策略的说明。"
@@ -741,7 +770,7 @@ flowchart LR
 每个任务使用独立 Git worktree：
 
 ```bash
-git worktree add ../worktrees/T-0032-section-writer -b task/T-0032-write-section-3-2 main
+git worktree add ../agent-worktrees/T-0032-section-writer -b task/T-0032-write-section-3-2 main
 ```
 
 这样可以隔离文件修改、并行任务和失败回滚。
@@ -770,7 +799,7 @@ runs/
     AGENT_CONTEXT.md
     stdout.log
     stderr.log
-    manifest.json
+    manifest.yaml
     summary.md
     questions.yaml
     evidence_requests.yaml
@@ -857,22 +886,24 @@ rows:
 图片由图片生成模型生成，但不应直接让图像模型自由发挥。Asset Director 应先生成 image brief：
 
 ```yaml
-asset_id: IMG-003
-type: architecture_diagram
-placement: manuscript/sections/03/02-system-architecture.md
+id: IMG-003
+task_id: T-0032
+purpose: "生成系统总体架构示意图，支撑第 3.2 节总体架构说明。"
+placement:
+  section_id: "3.2"
+  after_heading: "系统总体架构"
 caption: "图 3-2 系统总体架构示意图"
-must_include:
+required_elements:
   - 数据采集层
   - 平台服务层
   - 业务应用层
   - 运维管理模块
-must_avoid:
+forbidden_elements:
   - 未确认的厂商 Logo
   - 未确认的产品名称
-style:
-  - 正式技术规范书风格
-  - 清晰分层
-  - 中文标签
+style: "正式技术规范书风格；清晰分层；中文标签。"
+source_refs:
+  - SRC-ARCH-001
 ```
 
 用户可以先审 brief，再触发图片生成。

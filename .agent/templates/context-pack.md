@@ -1,3 +1,20 @@
+---
+task_id: T-0000
+purpose: "Explain why this context exists and what the agent should accomplish with it."
+must_use:
+  - source_id: RQ-000
+    summary: "Placeholder requirement."
+helpful_references:
+  - source_id: SRC-000
+    summary: "Optional supporting source summary."
+search_hints:
+  - "Search knowledge/source-index.yaml for source IDs related to the assigned requirement IDs."
+known_gaps:
+  - "List known missing evidence here."
+forbidden_claims:
+  - "Do not invent project-specific facts."
+---
+
 # Context Pack: T-0000
 
 ## Purpose
@@ -42,4 +59,3 @@ Add only the excerpts needed for the task.
 
 - Do not invent missing facts.
 - Write questions to `runs/T-0000/questions.yaml` when evidence is insufficient.
-

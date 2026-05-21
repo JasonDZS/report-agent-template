@@ -9,7 +9,7 @@
     "reviewer_role": { "type": "string" },
     "verdict": {
       "type": "string",
-      "enum": ["approved", "needs_revision", "blocked"]
+      "enum": ["approved", "needs_revision", "blocked", "human_decision_required"]
     },
     "summary": { "type": "string" },
     "findings": {
@@ -26,6 +26,10 @@
           "file": { "type": "string" },
           "line": { "type": "integer", "minimum": 1 },
           "requirement_id": { "type": "string" },
+          "related_requirements": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
           "issue": { "type": "string" },
           "suggestion": { "type": "string" }
         },
@@ -35,4 +39,3 @@
   },
   "additionalProperties": true
 }
-

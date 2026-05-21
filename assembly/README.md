@@ -8,5 +8,10 @@ Recommended source artifact:
 assembly/manuscript.md
 ```
 
-Generated Word/PDF files are ignored by default unless explicitly added.
+Recommended build manifest:
 
+```text
+assembly/build-manifest.yaml
+```
+
+Generated Word/PDF files are ignored by default unless explicitly added.

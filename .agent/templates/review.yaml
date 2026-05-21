@@ -7,7 +7,7 @@ findings:
     category: requirement_gap
     file: manuscript/sections/00/00-example-section.md
     line: 1
-    requirement_id: RQ-000
+    related_requirements:
+      - RQ-000
     issue: ""
     suggestion: ""
-

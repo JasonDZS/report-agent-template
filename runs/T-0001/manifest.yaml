@@ -1,0 +1,11 @@
+task_id: T-0001
+role: section-writer
+branch: task/T-0001-section-writer
+worktree: ../agent-worktrees/T-0001-section-writer
+status: planned
+model: TBD
+started_at: null
+completed_at: null
+commit: null
+notes: "Placeholder run manifest for workflow validation."
+

@@ -4,10 +4,14 @@ role: section-writer
 status: planned
 base_branch: main
 branch: task/T-0001-section-writer
+worktree: ../agent-worktrees/T-0001-section-writer
 objective: "Draft an example section to validate the workflow."
 background: "This is a placeholder task. Replace it with a real manuscript task."
 requirements:
   - RQ-000
+constraints:
+  - "Do not invent project-specific facts."
+  - "Use the example only to validate the workflow."
 allowed_inputs:
   required:
     - AGENTS.md

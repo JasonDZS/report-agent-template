@@ -1,3 +1,21 @@
+---
+task_id: T-0001
+purpose: "Validate the section-writing workflow with a placeholder section."
+must_use:
+  - source_id: RQ-000
+    summary: "Placeholder requirement for workflow testing."
+helpful_references:
+  - source_id: SRC-000
+    summary: "Placeholder source index entry for workflow testing."
+search_hints:
+  - "Check knowledge/source-index.yaml before requesting raw source access."
+  - "Prefer sources/excerpts/ over sources/raw/."
+known_gaps:
+  - "No real source documents have been added yet."
+forbidden_claims:
+  - "Do not invent project-specific facts."
+---
+
 # Context Pack: T-0001
 
 ## Purpose
@@ -39,4 +57,3 @@ No source excerpts are available yet.
 - State that this is a workflow validation section if drafting text.
 - Write missing-information questions to `runs/T-0001/questions.yaml` if needed.
 - Write missing-evidence requests to `runs/T-0001/evidence_requests.yaml` if the searchable layer is insufficient.
-

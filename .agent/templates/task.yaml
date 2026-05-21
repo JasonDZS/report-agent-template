@@ -4,9 +4,13 @@ role: section-writer
 status: planned
 base_branch: main
 branch: task/T-0000-section-writer
+worktree: ../agent-worktrees/T-0000-section-writer
 objective: "Write one scoped manuscript section."
 background: ""
 requirements: []
+constraints:
+  - "Do not invent unsupported claims."
+  - "Use conditional wording for uncertain performance or compliance claims."
 allowed_inputs:
   required:
     - AGENTS.md

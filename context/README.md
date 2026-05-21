@@ -10,6 +10,8 @@ What evidence and decisions did this task receive?
 
 Runtime records belong under `runs/<task-id>/`.
 
+Context packs should be Markdown files with YAML frontmatter. Markdown keeps them easy for agents to read; frontmatter gives the orchestrator stable fields for indexing and basic validation.
+
 Tasks use three information layers:
 
 ```text
@@ -19,4 +21,3 @@ Layer 3: restricted raw sources  -> sources/raw/
 ```
 
 Writers should start from Layer 1. If evidence is insufficient, they may use Layer 2 only when the task allows it. They should not read Layer 3 unless explicitly authorized.
-
