@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/review.schema.json",
+  "title": "Agent Review",
+  "type": "object",
+  "required": ["task_id", "reviewer_role", "verdict", "findings"],
+  "properties": {
+    "task_id": { "type": "string", "pattern": "^T-[0-9]{4,}$" },
+    "reviewer_role": { "type": "string" },
+    "verdict": {
+      "type": "string",
+      "enum": ["approved", "needs_revision", "blocked"]
+    },
+    "summary": { "type": "string" },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "category", "issue"],
+        "properties": {
+          "severity": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
+          "category": {
+            "type": "string",
+            "enum": ["requirement_gap", "unsupported_claim", "contradiction", "style", "format", "risk", "other"]
+          },
+          "file": { "type": "string" },
+          "line": { "type": "integer", "minimum": 1 },
+          "requirement_id": { "type": "string" },
+          "issue": { "type": "string" },
+          "suggestion": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
+

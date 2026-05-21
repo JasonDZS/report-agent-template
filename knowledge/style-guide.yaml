@@ -1,0 +1,15 @@
+document_language: zh-CN
+tone:
+  - formal
+  - precise
+  - evidence-backed
+rules:
+  - "Prefer concrete technical descriptions over generic slogans."
+  - "Avoid unsupported absolute commitments."
+  - "Use consistent terminology from knowledge/glossary.yaml."
+  - "Mark missing evidence explicitly instead of filling gaps with guesses."
+numbering:
+  chapters: decimal
+  figures: chapter_based
+  tables: chapter_based
+

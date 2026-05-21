@@ -1,0 +1,27 @@
+# Local agent worktrees should live outside this repo by convention.
+agent-worktrees/
+.worktrees/
+
+# Runtime logs can be large. Keep summaries/manifests if needed.
+runs/**/stdout.log
+runs/**/stderr.log
+runs/**/transcript.log
+runs/**/tmp/
+
+# Generated delivery artifacts.
+assembly/*.docx
+assembly/*.pdf
+assembly/*.html
+release/*.docx
+release/*.pdf
+release/*.zip
+
+# Generated raster assets can be large; commit briefs/prompts first.
+assets/generated/*
+!assets/generated/.gitkeep
+
+# System/editor files.
+.DS_Store
+*.swp
+*.tmp
+

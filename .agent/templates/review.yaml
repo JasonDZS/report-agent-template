@@ -1,0 +1,13 @@
+task_id: T-0000
+reviewer_role: reviewer
+verdict: needs_revision
+summary: ""
+findings:
+  - severity: medium
+    category: requirement_gap
+    file: manuscript/sections/00/00-example-section.md
+    line: 1
+    requirement_id: RQ-000
+    issue: ""
+    suggestion: ""
+

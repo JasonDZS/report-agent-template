@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/context-pack.schema.json",
+  "title": "Context Pack",
+  "type": "object",
+  "required": ["task_id", "purpose", "included_context"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "purpose": { "type": "string" },
+    "included_context": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "summary"],
+        "properties": {
+          "source_id": { "type": "string" },
+          "path": { "type": "string" },
+          "summary": { "type": "string" },
+          "relevant_requirements": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "adjacent_section_summaries": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}
+

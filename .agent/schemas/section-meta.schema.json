@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/section-meta.schema.json",
+  "title": "Section Metadata",
+  "type": "object",
+  "required": ["section_id", "title", "status", "requirements"],
+  "properties": {
+    "section_id": { "type": "string" },
+    "title": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "drafted", "reviewed", "approved", "locked", "needs_revision"]
+    },
+    "requirements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "sources": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tables": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "figures": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "last_task_id": { "type": "string" },
+    "review_status": { "type": "string" }
+  },
+  "additionalProperties": true
+}
+

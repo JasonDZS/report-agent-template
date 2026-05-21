@@ -1,0 +1,14 @@
+risk_rules:
+  - id: RR-001
+    name: unsupported_availability_commitment
+    description: "Do not promise availability, performance, delivery time, compliance, or capacity metrics without source evidence."
+    severity: high
+  - id: RR-002
+    name: unconditional_compliance
+    description: "Avoid unconditional compliance claims unless a requirement matrix or source document supports them."
+    severity: high
+  - id: RR-003
+    name: inconsistent_parameters
+    description: "Numeric parameters must remain consistent across text, tables, and figures."
+    severity: medium
+

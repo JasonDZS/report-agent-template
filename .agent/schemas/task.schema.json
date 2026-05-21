@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/task.schema.json",
+  "title": "Agent Task",
+  "type": "object",
+  "required": ["id", "type", "role", "status", "objective", "allowed_inputs", "allowed_outputs", "acceptance_criteria"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^T-[0-9]{4,}$" },
+    "type": {
+      "type": "string",
+      "enum": [
+        "requirement_extract",
+        "outline_plan",
+        "section_write",
+        "section_revision",
+        "table_build",
+        "image_brief",
+        "review",
+        "assembly",
+        "governance"
+      ]
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "chief-editor",
+        "requirement-analyst",
+        "document-architect",
+        "section-writer",
+        "reviewer",
+        "asset-director",
+        "assembler"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "assigned", "running", "drafted", "reviewed", "needs_revision", "approved", "blocked", "merged"]
+    },
+    "branch": { "type": "string" },
+    "base_branch": { "type": "string", "default": "main" },
+    "objective": { "type": "string", "minLength": 1 },
+    "background": { "type": "string" },
+    "requirements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "allowed_inputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "allowed_outputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "human_review_required": { "type": "boolean", "default": true },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": true
+}
+

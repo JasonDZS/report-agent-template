@@ -1,0 +1,29 @@
+id: T-0001
+type: section_write
+role: section-writer
+status: planned
+base_branch: main
+branch: task/T-0001-section-writer
+objective: "Draft an example section to validate the workflow."
+background: "This is a placeholder task. Replace it with a real manuscript task."
+requirements:
+  - RQ-000
+allowed_inputs:
+  - AGENTS.md
+  - .agent/roles/section-writer.md
+  - knowledge/glossary.yaml
+  - knowledge/style-guide.yaml
+  - knowledge/requirements.yaml
+  - runs/T-0001/context_pack.md
+allowed_outputs:
+  - manuscript/sections/00/00-example-section.md
+  - manuscript/sections/00/00-example-section.meta.yaml
+  - runs/T-0001/questions.yaml
+  - runs/T-0001/summary.md
+acceptance_criteria:
+  - "Only allowed output files are modified."
+  - "The draft identifies missing evidence instead of inventing project facts."
+  - "Section metadata is created."
+human_review_required: true
+notes: "Use this task to test a Codex CLI worker."
+
