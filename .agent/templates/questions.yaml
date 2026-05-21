@@ -1,0 +1,23 @@
+task_id: T-0000
+status: open
+questions:
+  - id: Q-0001
+    type: decision_required
+    severity: high
+    blocking: true
+    question: "Should the manuscript make this commitment?"
+    why_it_matters: "The answer changes the commitments made in the manuscript."
+    recommendation: "Use the lower-risk option unless supporting evidence is provided."
+    options:
+      - id: A
+        label: "Use conditional wording"
+        risk: low
+        impact: "Avoids an unsupported commitment."
+      - id: B
+        label: "Make the explicit commitment"
+        risk: high
+        impact: "Requires approved evidence and sponsor approval."
+    recommended_option_id: A
+    related_requirements: []
+    related_files: []
+    source_refs: []

@@ -1,0 +1,17 @@
+updated_at: "2026-05-21T00:00:00Z"
+generated_by: orchestrator
+tasks:
+  - id: T-0001
+    type: section_write
+    role: section-writer
+    status: planned
+    branch: task/T-0001-section-writer
+    depends_on:
+      tasks: []
+      directives: []
+      decisions: []
+      resolved_escalations: []
+    blocks: []
+    directive_refs: []
+    decision_refs: []
+governance_gates: []

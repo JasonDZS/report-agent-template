@@ -17,6 +17,7 @@ Modify only files listed in allowed_outputs.
 Start from required inputs. Use searchable inputs only if the evidence pack is insufficient.
 Do not read restricted inputs unless the task explicitly authorizes it.
 If information is still missing, write evidence requests to runs/<task-id>/evidence_requests.yaml or questions to runs/<task-id>/questions.yaml.
+Do not wait for human input inside the worker process. If the task is blocked by a decision, evidence gap, or conflict, record the blocker, write a summary, commit the allowed artifacts, and stop.
 Write a short summary to runs/<task-id>/summary.md.
 Commit your changes with message: "<task-id>: <summary>".
 ```

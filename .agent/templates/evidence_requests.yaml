@@ -1,0 +1,13 @@
+task_id: T-0000
+status: open
+requests:
+  - id: ER-0001
+    needed_evidence: "Approved source for the claim or parameter."
+    purpose: "Support a manuscript statement without inventing facts."
+    blocking: true
+    search_attempts:
+      - path: knowledge/source-index.yaml
+        query: ""
+        result: "No supporting source found."
+    related_requirements: []
+    related_files: []

@@ -1,0 +1,60 @@
+id: T-0001
+type: section_revision
+role: section-writer
+status: planned
+base_branch: main
+branch: task/T-0001-section-writer-continuation
+worktree: ../agent-worktrees/T-0001-section-writer-continuation
+continues_from: T-0000
+depends_on:
+  tasks:
+    - T-0000
+  directives: []
+  decisions:
+    - DEC-0001
+  resolved_escalations:
+    - E-0001
+blocks: []
+directive_refs: []
+decision_refs:
+  - DEC-0001
+escalation_refs:
+  - E-0001
+continuation_policy:
+  session_strategy: new_session
+  preserve_worktree: true
+  reuse_branch: false
+  resume_session_ref: ""
+objective: "Continue the prior task after the recorded decision or resolved escalation."
+background: "Use the prior run summary, blocker, and recorded governance decision as file-backed context."
+requirements: []
+constraints:
+  - "Do not rely on a suspended worker process or unstored chat context."
+  - "Apply the referenced decision before modifying manuscript content."
+allowed_inputs:
+  required:
+    - AGENTS.md
+    - .agent/roles/section-writer.md
+    - tasks/T-0000.yaml
+    - runs/T-0000/summary.md
+    - governance/escalations/E-0001.yaml
+    - governance/decisions/DEC-0001.yaml
+    - context/T-0001-context-pack.md
+    - runs/T-0001/AGENT_CONTEXT.md
+  searchable:
+    - knowledge/source-index.yaml
+    - sources/excerpts/
+  restricted:
+    - sources/raw/
+allowed_outputs:
+  - manuscript/sections/00/00-example-section.md
+  - manuscript/sections/00/00-example-section.meta.yaml
+  - runs/T-0001/questions.yaml
+  - runs/T-0001/evidence_requests.yaml
+  - runs/T-0001/summary.md
+acceptance_criteria:
+  - "The continuation applies all referenced decisions."
+  - "The summary records how the prior blocker was resolved."
+  - "Only allowed output files are modified."
+human_review_required: true
+notes: ""

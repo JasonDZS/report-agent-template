@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/evidence-requests.schema.json",
+  "title": "Evidence Requests",
+  "type": "object",
+  "required": [
+    "task_id",
+    "status",
+    "requests"
+  ],
+  "properties": {
+    "task_id": {
+      "$ref": "#/$defs/taskId"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "triaged",
+        "assigned",
+        "resolved",
+        "dismissed"
+      ]
+    },
+    "requests": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "needed_evidence",
+          "purpose",
+          "blocking"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^ER-[0-9]{4,}$"
+          },
+          "needed_evidence": {
+            "type": "string",
+            "minLength": 1
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1
+          },
+          "blocking": {
+            "type": "boolean"
+          },
+          "search_attempts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "query": {
+                  "type": "string"
+                },
+                "result": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "related_requirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "related_files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "converted_to_escalation": {
+            "$ref": "#/$defs/escalationId"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "taskId": {
+      "type": "string",
+      "pattern": "^T-[0-9]{4,}$"
+    },
+    "escalationId": {
+      "type": "string",
+      "pattern": "^E-[0-9]{4,}$"
+    }
+  }
+}

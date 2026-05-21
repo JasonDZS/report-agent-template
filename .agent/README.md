@@ -5,6 +5,10 @@ This directory contains reusable instructions, schemas, and templates for Codex 
 It also contains governance schemas for the orchestrator. The project-specific directive,
 decision, and escalation records themselves live under `governance/`.
 
+See `.agent/orchestrator.md` for the control-plane protocol that explains how
+tasks, run manifests, questions, escalations, decisions, and continuation tasks
+fit together.
+
 Layering model:
 
 1. `AGENTS.md`: shared repository rules.

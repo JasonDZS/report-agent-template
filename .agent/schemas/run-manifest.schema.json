@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/run-manifest.schema.json",
+  "title": "Agent Run Manifest",
+  "type": "object",
+  "required": [
+    "task_id",
+    "role",
+    "status",
+    "branch",
+    "worktree",
+    "session_policy"
+  ],
+  "properties": {
+    "task_id": {
+      "$ref": "#/$defs/taskId"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "chief-editor",
+        "requirement-analyst",
+        "document-architect",
+        "section-writer",
+        "reviewer",
+        "asset-director",
+        "assembler"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "running",
+        "completed",
+        "blocked_pending_decision",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "branch": {
+      "type": "string"
+    },
+    "worktree": {
+      "type": "string"
+    },
+    "base_ref": {
+      "type": "string"
+    },
+    "base_commit": {
+      "type": "string"
+    },
+    "head_commit": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "started_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "session_policy": {
+      "type": "object",
+      "required": [
+        "strategy",
+        "wait_for_human"
+      ],
+      "properties": {
+        "strategy": {
+          "type": "string",
+          "enum": [
+            "new_session",
+            "resume_if_available",
+            "resume_required"
+          ],
+          "default": "new_session"
+        },
+        "wait_for_human": {
+          "const": false
+        },
+        "resume_session_ref": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "context_pack": {
+          "type": "string"
+        },
+        "agent_context": {
+          "type": "string"
+        },
+        "directives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/directiveId"
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/decisionId"
+          }
+        },
+        "escalations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/escalationId"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exit": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "enum": [
+            "completed",
+            "blocked_pending_decision",
+            "evidence_gap",
+            "no_changes",
+            "failed",
+            "cancelled"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "question_file": {
+          "type": "string"
+        },
+        "evidence_request_file": {
+          "type": "string"
+        },
+        "escalation_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/escalationId"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "schema_validated": {
+          "type": "boolean"
+        },
+        "diff_boundary_validated": {
+          "type": "boolean"
+        },
+        "out_of_scope_files": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "blocked_pending_decision"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "exit"
+        ]
+      }
+    }
+  ],
+  "additionalProperties": true,
+  "$defs": {
+    "taskId": {
+      "type": "string",
+      "pattern": "^T-[0-9]{4,}$"
+    },
+    "directiveId": {
+      "type": "string",
+      "pattern": "^D-[0-9]{4,}$"
+    },
+    "decisionId": {
+      "type": "string",
+      "pattern": "^DEC-[0-9]{4,}$"
+    },
+    "escalationId": {
+      "type": "string",
+      "pattern": "^E-[0-9]{4,}$"
+    }
+  }
+}

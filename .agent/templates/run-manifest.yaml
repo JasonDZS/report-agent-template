@@ -1,11 +1,11 @@
-task_id: T-0001
+task_id: T-0000
 role: section-writer
-branch: task/T-0001-section-writer
-worktree: ../agent-worktrees/T-0001-section-writer
+status: planned
+branch: task/T-0000-section-writer
+worktree: ../agent-worktrees/T-0000-section-writer
 base_ref: main
 base_commit: ""
 head_commit: ""
-status: planned
 model: ""
 started_at: null
 completed_at: null
@@ -14,9 +14,9 @@ session_policy:
   wait_for_human: false
   resume_session_ref: ""
 inputs:
-  task: tasks/T-0001-example-write-section.yaml
-  context_pack: context/T-0001-context-pack.md
-  agent_context: runs/T-0001/AGENT_CONTEXT.md
+  task: tasks/T-0000.yaml
+  context_pack: context/T-0000-context-pack.md
+  agent_context: runs/T-0000/AGENT_CONTEXT.md
   directives: []
   decisions: []
   escalations: []
@@ -31,4 +31,4 @@ validation:
   schema_validated: false
   diff_boundary_validated: false
   out_of_scope_files: []
-notes: "Placeholder run manifest for workflow validation."
+notes: ""

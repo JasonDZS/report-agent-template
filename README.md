@@ -88,3 +88,13 @@ The orchestrator compiles sponsor instructions and agent feedback through three 
 - `governance/escalations/`: structured events that should float up for triage, evidence, review, or human judgment.
 
 Reusable schemas and starter templates live under `.agent/schemas/` and `.agent/templates/`.
+
+## Orchestrator Protocol
+
+The orchestrator drives the workspace through file-backed state, not suspended
+worker processes. If a worker is blocked by a human decision, it records a
+structured question or evidence request under `runs/<task-id>/`, commits allowed
+artifacts, and exits. The orchestrator records the resulting escalation or
+decision under `governance/` and creates a continuation task when work can resume.
+
+See `.agent/orchestrator.md` for the detailed control loop and state transitions.

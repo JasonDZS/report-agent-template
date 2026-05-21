@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/task-graph.schema.json",
+  "title": "Task Graph",
+  "type": "object",
+  "required": [
+    "updated_at",
+    "tasks"
+  ],
+  "properties": {
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "generated_by": {
+      "type": "string"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "role",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/taskId"
+          },
+          "type": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "branch": {
+            "type": "string"
+          },
+          "depends_on": {
+            "type": "object",
+            "properties": {
+              "tasks": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/taskId"
+                }
+              },
+              "directives": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/directiveId"
+                }
+              },
+              "decisions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/decisionId"
+                }
+              },
+              "resolved_escalations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/escalationId"
+                }
+              }
+            },
+            "additionalProperties": true
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/taskId"
+            }
+          },
+          "continues_from": {
+            "$ref": "#/$defs/taskId"
+          },
+          "blocked_by_escalation": {
+            "$ref": "#/$defs/escalationId"
+          },
+          "directive_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/directiveId"
+            }
+          },
+          "decision_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/decisionId"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "governance_gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "directive",
+              "decision",
+              "escalation"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/taskId"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "taskId": {
+      "type": "string",
+      "pattern": "^T-[0-9]{4,}$"
+    },
+    "directiveId": {
+      "type": "string",
+      "pattern": "^D-[0-9]{4,}$"
+    },
+    "decisionId": {
+      "type": "string",
+      "pattern": "^DEC-[0-9]{4,}$"
+    },
+    "escalationId": {
+      "type": "string",
+      "pattern": "^E-[0-9]{4,}$"
+    }
+  }
+}

@@ -30,6 +30,7 @@ All agents must follow these rules unless a higher-priority user instruction ove
 - If the evidence pack is insufficient, search only the task's `allowed_inputs.searchable` paths.
 - Do not read `allowed_inputs.restricted` paths unless the task explicitly authorizes it.
 - If evidence is still insufficient, write `runs/<task-id>/evidence_requests.yaml` or `runs/<task-id>/questions.yaml` instead of guessing.
+- Do not wait for human input inside a worker process. Record blocking questions or evidence gaps, summarize the blocker, commit allowed artifacts, and exit.
 
 ## Manuscript Source Rules
 

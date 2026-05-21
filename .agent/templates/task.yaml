@@ -5,6 +5,20 @@ status: planned
 base_branch: main
 branch: task/T-0000-section-writer
 worktree: ../agent-worktrees/T-0000-section-writer
+depends_on:
+  tasks: []
+  directives: []
+  decisions: []
+  resolved_escalations: []
+blocks: []
+directive_refs: []
+decision_refs: []
+escalation_refs: []
+continuation_policy:
+  session_strategy: new_session
+  preserve_worktree: true
+  reuse_branch: false
+  resume_session_ref: ""
 objective: "Write one scoped manuscript section."
 background: ""
 requirements: []
