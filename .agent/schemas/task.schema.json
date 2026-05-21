@@ -45,8 +45,31 @@
       "items": { "type": "string" }
     },
     "allowed_inputs": {
-      "type": "array",
-      "items": { "type": "string" }
+      "oneOf": [
+        {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        {
+          "type": "object",
+          "required": ["required"],
+          "properties": {
+            "required": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "searchable": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "restricted": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "allowed_outputs": {
       "type": "array",
@@ -57,9 +80,17 @@
       "items": { "type": "string" },
       "minItems": 1
     },
+    "evidence_policy": {
+      "type": "object",
+      "properties": {
+        "start_with_context_pack": { "type": "boolean", "default": true },
+        "record_searchable_sources": { "type": "boolean", "default": true },
+        "raw_sources_require_explicit_authorization": { "type": "boolean", "default": true }
+      },
+      "additionalProperties": true
+    },
     "human_review_required": { "type": "boolean", "default": true },
     "notes": { "type": "string" }
   },
   "additionalProperties": true
 }
-

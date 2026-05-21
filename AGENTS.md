@@ -26,6 +26,10 @@ All agents must follow these rules unless a higher-priority user instruction ove
 - If evidence is missing, mark it explicitly and write a question file.
 - Use requirement IDs and source IDs where available.
 - Avoid over-commitment. Use conditional wording when the underlying evidence is conditional.
+- Treat `context/<task-id>-context-pack.md` as the required evidence pack for the task.
+- If the evidence pack is insufficient, search only the task's `allowed_inputs.searchable` paths.
+- Do not read `allowed_inputs.restricted` paths unless the task explicitly authorizes it.
+- If evidence is still insufficient, write `runs/<task-id>/evidence_requests.yaml` or `runs/<task-id>/questions.yaml` instead of guessing.
 
 ## Manuscript Source Rules
 
@@ -57,4 +61,3 @@ T-0001: draft section 3.2 architecture overview
 
 - Include generated review or run summaries when they are useful for audit.
 - Do not commit raw logs unless explicitly requested.
-

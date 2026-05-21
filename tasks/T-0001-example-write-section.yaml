@@ -9,21 +9,29 @@ background: "This is a placeholder task. Replace it with a real manuscript task.
 requirements:
   - RQ-000
 allowed_inputs:
-  - AGENTS.md
-  - .agent/roles/section-writer.md
-  - knowledge/glossary.yaml
-  - knowledge/style-guide.yaml
-  - knowledge/requirements.yaml
-  - runs/T-0001/context_pack.md
+  required:
+    - AGENTS.md
+    - .agent/roles/section-writer.md
+    - knowledge/glossary.yaml
+    - knowledge/style-guide.yaml
+    - knowledge/requirements.yaml
+    - context/T-0001-context-pack.md
+    - runs/T-0001/AGENT_CONTEXT.md
+  searchable:
+    - knowledge/source-index.yaml
+    - sources/excerpts/
+  restricted:
+    - sources/raw/
 allowed_outputs:
   - manuscript/sections/00/00-example-section.md
   - manuscript/sections/00/00-example-section.meta.yaml
   - runs/T-0001/questions.yaml
+  - runs/T-0001/evidence_requests.yaml
   - runs/T-0001/summary.md
 acceptance_criteria:
   - "Only allowed output files are modified."
   - "The draft identifies missing evidence instead of inventing project facts."
+  - "If searchable inputs are used, the summary records the source IDs used."
   - "Section metadata is created."
 human_review_required: true
 notes: "Use this task to test a Codex CLI worker."
-

@@ -1,0 +1,11 @@
+sources:
+  - id: SRC-000
+    title: Placeholder source entry
+    type: placeholder
+    raw_path: null
+    excerpt_paths: []
+    summary: "Placeholder entry for workflow validation. Replace with real source records."
+    related_requirements:
+      - RQ-000
+    access: searchable
+

@@ -3,11 +3,11 @@
   "$id": "https://example.local/schemas/context-pack.schema.json",
   "title": "Context Pack",
   "type": "object",
-  "required": ["task_id", "purpose", "included_context"],
+  "required": ["task_id", "purpose", "must_use"],
   "properties": {
     "task_id": { "type": "string" },
     "purpose": { "type": "string" },
-    "included_context": {
+    "must_use": {
       "type": "array",
       "items": {
         "type": "object",
@@ -24,6 +24,35 @@
         "additionalProperties": true
       }
     },
+    "helpful_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "summary"],
+        "properties": {
+          "source_id": { "type": "string" },
+          "path": { "type": "string" },
+          "summary": { "type": "string" },
+          "relevant_requirements": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "search_hints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "known_gaps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "forbidden_claims": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
     "adjacent_section_summaries": {
       "type": "array",
       "items": { "type": "string" }
@@ -35,4 +64,3 @@
   },
   "additionalProperties": true
 }
-

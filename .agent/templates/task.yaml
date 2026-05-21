@@ -8,21 +8,29 @@ objective: "Write one scoped manuscript section."
 background: ""
 requirements: []
 allowed_inputs:
-  - AGENTS.md
-  - .agent/roles/section-writer.md
-  - knowledge/glossary.yaml
-  - knowledge/style-guide.yaml
-  - knowledge/requirements.yaml
-  - runs/T-0000/context_pack.md
+  required:
+    - AGENTS.md
+    - .agent/roles/section-writer.md
+    - knowledge/glossary.yaml
+    - knowledge/style-guide.yaml
+    - knowledge/requirements.yaml
+    - context/T-0000-context-pack.md
+    - runs/T-0000/AGENT_CONTEXT.md
+  searchable:
+    - knowledge/source-index.yaml
+    - sources/excerpts/
+  restricted:
+    - sources/raw/
 allowed_outputs:
   - manuscript/sections/00/00-example-section.md
   - manuscript/sections/00/00-example-section.meta.yaml
   - runs/T-0000/questions.yaml
+  - runs/T-0000/evidence_requests.yaml
   - runs/T-0000/summary.md
 acceptance_criteria:
   - "Only allowed output files are modified."
   - "Assigned requirements are explicitly covered or listed as missing evidence."
+  - "If searchable inputs are used, the summary records the source IDs used."
   - "Section metadata is updated."
 human_review_required: true
 notes: ""
-

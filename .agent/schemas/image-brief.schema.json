@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/image-brief.schema.json",
+  "title": "Image Brief",
+  "type": "object",
+  "required": ["id", "task_id", "purpose", "placement", "caption", "required_elements", "forbidden_elements"],
+  "properties": {
+    "id": { "type": "string" },
+    "task_id": { "type": "string", "pattern": "^T-[0-9]{4,}$" },
+    "purpose": { "type": "string" },
+    "placement": {
+      "type": "object",
+      "required": ["section_id"],
+      "properties": {
+        "section_id": { "type": "string" },
+        "after_heading": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "caption": { "type": "string" },
+    "required_elements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "forbidden_elements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "style": { "type": "string" },
+    "source_refs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "prompt_path": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "briefed", "prompted", "generated", "approved", "rejected"]
+    }
+  },
+  "additionalProperties": true
+}
+

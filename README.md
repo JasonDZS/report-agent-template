@@ -25,6 +25,7 @@ sources/                   Original input documents and extracted excerpts
 knowledge/                 Requirements, glossary, style, risk rules
 plan/                      Outline, response matrix, section task index
 tasks/                     Agent task packages
+context/                   Task evidence packs prepared for agents
 manuscript/                Diff-friendly manuscript source
 assets/                    Image/table briefs, prompts, generated assets
 reviews/                   Structured review outputs
@@ -59,7 +60,20 @@ Every agent must:
 - read `AGENTS.md`
 - read its role file in `.agent/roles/`
 - read the assigned task file
+- read the required context pack under `context/`
+- use searchable inputs only when required context is insufficient
 - modify only the allowed outputs
 - commit changes on the task branch
 - write any missing-information questions to the task run directory
 
+## Information Environment
+
+Tasks use a three-layer information model:
+
+```text
+Layer 1: Required evidence pack  -> context/<task-id>-context-pack.md
+Layer 2: Searchable excerpts     -> knowledge/source-index.yaml + sources/excerpts/
+Layer 3: Restricted raw sources  -> sources/raw/
+```
+
+Writers start from Layer 1. If evidence is insufficient, they may use Layer 2 only when the task allows it. They should not read Layer 3 unless explicitly authorized by the task.

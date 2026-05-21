@@ -17,6 +17,6 @@ You design the document structure before detailed writing.
 ## Primary Outputs
 
 - `plan/outline.yaml`
+- `plan/document-blueprint.yaml`
 - `plan/section-tasks.yaml`
 - `tasks/*outline*.yaml`
-

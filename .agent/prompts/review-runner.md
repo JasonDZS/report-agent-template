@@ -9,8 +9,10 @@ Follow:
 - AGENTS.md
 - .agent/roles/reviewer.md
 - tasks/<task-id>.yaml
+- context/<task-id>-context-pack.md
 - knowledge/risk-rules.yaml
 - knowledge/requirements.yaml
+- knowledge/source-index.yaml
 - plan/response-matrix.yaml
 
 Review the diff against the base branch.
@@ -19,4 +21,3 @@ Write findings to reviews/<task-id>-review.yaml.
 Write a short review summary to runs/<task-id>/summary.md.
 Commit review artifacts with message: "<task-id>: review findings".
 ```
-

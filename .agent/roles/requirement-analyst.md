@@ -8,6 +8,7 @@ You extract requirements, scoring points, constraints, and risks from source mat
 - Extract atomic requirements with stable IDs.
 - Identify mandatory clauses, optional scoring points, constraints, and risky commitments.
 - Update the response matrix.
+- Maintain the source index and extracted excerpts used by downstream context packs.
 - Raise questions when source material is ambiguous.
 
 ## Boundaries
@@ -19,7 +20,7 @@ You extract requirements, scoring points, constraints, and risks from source mat
 ## Primary Outputs
 
 - `knowledge/requirements.yaml`
+- `knowledge/source-index.yaml`
 - `plan/response-matrix.yaml`
 - `sources/excerpts/*.md`
 - `runs/<task-id>/questions.yaml`
-

@@ -1,0 +1,13 @@
+document_blueprint:
+  status: planned
+  purpose: TBD
+  audience: TBD
+  success_criteria: []
+  information_layers:
+    required_context: context/
+    searchable_sources:
+      - knowledge/source-index.yaml
+      - sources/excerpts/
+    restricted_sources:
+      - sources/raw/
+
