@@ -9,25 +9,3 @@ sources:
     related_requirements:
       - "RQ-000"
     access: searchable
-  -
-    id: "SRC-001"
-    title: 大模型与具身智能体的协同进化成果与实践案例3.0_52e36113.pptx
-    type: document
-    content_type: "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-    raw_path: "sources/raw/SRC-001-3.0_52e36113.pptx"
-    excerpt_paths: []
-    summary: "Uploaded file: 3.0_52e36113.pptx"
-    related_requirements: []
-    access: searchable
-    created_at: "2026-05-21T07:22:38Z"
-  -
-    id: "SRC-002"
-    title: 大模型与具身智能体的协同进化成果与实践案例3.0.pptx
-    type: document
-    content_type: "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-    raw_path: "sources/raw/SRC-002-3.0.pptx"
-    excerpt_paths: []
-    summary: "Uploaded file: 3.0.pptx"
-    related_requirements: []
-    access: searchable
-    created_at: "2026-05-21T07:22:38Z"

@@ -1,17 +1,191 @@
-updated_at: "2026-05-21T00:00:00Z"
-generated_by: orchestrator
-tasks:
-  - id: T-0001
+kind: task_graph
+updated_at: "2026-05-21T13:06:31Z"
+generated_by: "web-backend"
+summary:
+  total: 3
+  completed: 0
+  blocked: 0
+  ready: 2
+  progress: 0
+  pending_escalations: 0
+nodes:
+  -
+    id: "T-0001"
     type: section_write
-    role: section-writer
+    role: "section-writer"
     status: planned
-    branch: task/T-0001-section-writer
+    objective: Draft an example section to validate the workflow.
+    ready: true
+    dependencies:
+      tasks: []
+      directives: []
+      decisions: []
+      resolved_escalations: []
     depends_on:
       tasks: []
       directives: []
       decisions: []
       resolved_escalations: []
     blocks: []
-    directive_refs: []
-    decision_refs: []
-governance_gates: []
+    sections:
+      - "00/00-example-section"
+    requirements:
+      - "RQ-000"
+    run_status: planned
+    review_status: null
+    file: "tasks/T-0001-example-write-section.yaml"
+  -
+    id: "T-0002"
+    type: section_revision
+    role: "section-writer"
+    status: planned
+    objective: "按用户指令修订 00 / 00-example-section：国产化适配加强，但不要承诺未经确认的性能参数"
+    ready: true
+    dependencies:
+      tasks: []
+      directives:
+        - "D-0001"
+      decisions: []
+      resolved_escalations: []
+    depends_on:
+      tasks: []
+      directives:
+        - "D-0001"
+      decisions: []
+      resolved_escalations: []
+    blocks: []
+    sections:
+      - "00/00-example-section"
+    requirements: []
+    run_status: null
+    review_status: null
+    file: "tasks/T-0002-section-revision.yaml"
+  -
+    id: "T-0003"
+    type: review
+    role: reviewer
+    status: planned
+    objective: "审查 00 / 00-example-section 是否落实用户指令并规避未经确认的承诺。"
+    ready: false
+    dependencies:
+      tasks:
+        - "T-0002"
+      directives:
+        - "D-0001"
+      decisions: []
+      resolved_escalations: []
+    depends_on:
+      tasks:
+        - "T-0002"
+      directives:
+        - "D-0001"
+      decisions: []
+      resolved_escalations: []
+    blocks: []
+    sections:
+      - "00/00-example-section"
+    requirements: []
+    run_status: null
+    review_status: null
+    file: "tasks/T-0003-review.yaml"
+tasks:
+  -
+    id: "T-0001"
+    type: section_write
+    role: "section-writer"
+    status: planned
+    objective: Draft an example section to validate the workflow.
+    ready: true
+    dependencies:
+      tasks: []
+      directives: []
+      decisions: []
+      resolved_escalations: []
+    depends_on:
+      tasks: []
+      directives: []
+      decisions: []
+      resolved_escalations: []
+    blocks: []
+    sections:
+      - "00/00-example-section"
+    requirements:
+      - "RQ-000"
+    run_status: planned
+    review_status: null
+    file: "tasks/T-0001-example-write-section.yaml"
+  -
+    id: "T-0002"
+    type: section_revision
+    role: "section-writer"
+    status: planned
+    objective: "按用户指令修订 00 / 00-example-section：国产化适配加强，但不要承诺未经确认的性能参数"
+    ready: true
+    dependencies:
+      tasks: []
+      directives:
+        - "D-0001"
+      decisions: []
+      resolved_escalations: []
+    depends_on:
+      tasks: []
+      directives:
+        - "D-0001"
+      decisions: []
+      resolved_escalations: []
+    blocks: []
+    sections:
+      - "00/00-example-section"
+    requirements: []
+    run_status: null
+    review_status: null
+    file: "tasks/T-0002-section-revision.yaml"
+  -
+    id: "T-0003"
+    type: review
+    role: reviewer
+    status: planned
+    objective: "审查 00 / 00-example-section 是否落实用户指令并规避未经确认的承诺。"
+    ready: false
+    dependencies:
+      tasks:
+        - "T-0002"
+      directives:
+        - "D-0001"
+      decisions: []
+      resolved_escalations: []
+    depends_on:
+      tasks:
+        - "T-0002"
+      directives:
+        - "D-0001"
+      decisions: []
+      resolved_escalations: []
+    blocks: []
+    sections:
+      - "00/00-example-section"
+    requirements: []
+    run_status: null
+    review_status: null
+    file: "tasks/T-0003-review.yaml"
+edges:
+  -
+    from: "D-0001"
+    to: "T-0002"
+    type: directive_dependency
+  -
+    from: "T-0002"
+    to: "T-0003"
+    type: task_dependency
+  -
+    from: "D-0001"
+    to: "T-0003"
+    type: directive_dependency
+indexes:
+  directives:
+    - "D-0001"
+  decisions: []
+  escalations: []
+  runs:
+    - "T-0001"
+  reviews: []

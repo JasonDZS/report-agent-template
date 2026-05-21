@@ -1,0 +1,43 @@
+id: "D-0001"
+type: risk_policy
+source:
+  kind: user
+  name: ""
+  ref: web
+status: active
+priority: high
+scope:
+  document: false
+  sections:
+    - "00/00-example-section"
+  tasks:
+    - "T-0001"
+applies_to:
+  roles:
+    - "chief-editor"
+    - "document-architect"
+    - "section-writer"
+    - reviewer
+  stages:
+    - planning
+    - writing
+    - review
+content: 国产化适配加强，但不要承诺未经确认的性能参数
+rationale: Drafted from Sponsor Console instruction proposal.
+enforcement:
+  -
+    channel: task_constraint
+    text: 国产化适配加强，但不要承诺未经确认的性能参数
+    required: true
+  -
+    channel: reviewer_check
+    text: Verify that affected tasks follow this confirmed directive and surface unsupported claims.
+    required: true
+conflict_policy: raise_escalation
+related_requirements: []
+related_decisions: []
+related_escalations: []
+supersedes: []
+created_at: "2026-05-21T13:06:30Z"
+updated_at: "2026-05-21T13:06:30Z"
+notes: 未经确认的性能参数; 证据边界需要锁定; 未匹配结构化需求

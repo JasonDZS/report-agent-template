@@ -1,0 +1,64 @@
+id: "T-0003"
+type: review
+role: reviewer
+status: planned
+base_branch: main
+branch: "task/T-0003-reviewer"
+worktree: "../agent-worktrees/T-0003-reviewer"
+depends_on:
+  tasks:
+    - "T-0002"
+  directives:
+    - "D-0001"
+  decisions: []
+  resolved_escalations: []
+blocks: []
+directive_refs:
+  - "D-0001"
+decision_refs: []
+escalation_refs: []
+continuation_policy:
+  session_strategy: new_session
+  preserve_worktree: true
+  reuse_branch: false
+objective: "审查 00 / 00-example-section 是否落实用户指令并规避未经确认的承诺。"
+background: Review task paired with the proposed section revision.
+requirements: []
+sections:
+  - "00/00-example-section"
+constraints:
+  - Check directive compliance.
+  - Escalate unsupported commitments instead of approving them.
+  - "Follow directive D-0001: 国产化适配加强，但不要承诺未经确认的性能参数"
+allowed_inputs:
+  required:
+    - AGENTS.md
+    - .agent/roles/reviewer.md
+    - knowledge/requirements.yaml
+    - "context/T-0003-context-pack.md"
+    - "runs/T-0003/AGENT_CONTEXT.md"
+  searchable:
+    - "knowledge/source-index.yaml"
+    - sources/excerpts/
+    - plan/outline.yaml
+    - "plan/document-blueprint.yaml"
+    - "governance/indexes/active-directives.yaml"
+    - "governance/indexes/pending-escalations.yaml"
+  restricted:
+    - sources/raw/
+allowed_outputs:
+  - "reviews/T-0003-review.yaml"
+  - "runs/T-0003/questions.yaml"
+  - "runs/T-0003/evidence_requests.yaml"
+  - "runs/T-0003/summary.md"
+acceptance_criteria:
+  - "The review records findings, severity, affected scope, and recommended next actions."
+  - "High-risk or unresolved questions are escalated instead of silently approved."
+human_review_required: false
+created_at: "2026-05-21T13:06:30Z"
+updated_at: "2026-05-21T13:06:30Z"
+notes: ""
+proposal_refs:
+  - "P-0001"
+review_target_task_id: "T-0002"
+review_target: "proposal-task-1"
