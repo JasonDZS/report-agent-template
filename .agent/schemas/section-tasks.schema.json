@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/section-tasks.schema.json",
+  "title": "Section Task Plan",
+  "type": "object",
+  "required": ["section_tasks"],
+  "properties": {
+    "section_tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "section_id", "title", "task_id"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^ST-[0-9]{3,}$" },
+          "section_id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "status": { "type": "string" },
+          "task_id": { "$ref": "#/$defs/taskId" },
+          "target_path": { "type": "string" },
+          "requirements": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/requirementId" }
+          },
+          "source_task": { "$ref": "#/$defs/taskId" },
+          "approval_id": { "$ref": "#/$defs/approvalId" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "status": { "type": "string" },
+    "outline_ref": { "type": "string" },
+    "approval_id": { "$ref": "#/$defs/approvalId" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "generated_by": { "type": "string" }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "taskId": { "type": "string", "pattern": "^T-[0-9]{4,}$" },
+    "requirementId": { "type": "string", "pattern": "^RQ-[0-9A-Za-z._-]+$" },
+    "approvalId": { "type": "string", "pattern": "^APR-[0-9]{4,}$" }
+  }
+}

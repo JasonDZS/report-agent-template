@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/outline.schema.json",
+  "title": "Document Outline",
+  "type": "object",
+  "required": ["document", "sections"],
+  "properties": {
+    "document": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "type": { "type": "string" },
+        "status": { "type": "string" },
+        "client": { "type": "string" },
+        "owner": { "type": "string" },
+        "deadline": { "type": "string" },
+        "generated_by": { "type": "string" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "purpose": { "type": "string" },
+          "status": { "type": "string" },
+          "requirement_refs": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/requirementId" }
+          },
+          "expected_length": { "type": ["integer", "string"] },
+          "tables": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "images": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "requirementId": { "type": "string", "pattern": "^RQ-[0-9A-Za-z._-]+$" }
+  }
+}

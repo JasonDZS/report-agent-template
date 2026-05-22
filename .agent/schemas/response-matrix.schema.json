@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/response-matrix.schema.json",
+  "title": "Response Matrix",
+  "type": "object",
+  "required": ["response_matrix"],
+  "properties": {
+    "response_matrix": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["requirement_id", "status"],
+        "properties": {
+          "requirement_id": { "$ref": "#/$defs/requirementId" },
+          "status": { "type": "string" },
+          "response_strategy": { "type": "string" },
+          "evidence_refs": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/sourceId" }
+          },
+          "planned_sections": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "owner_role": { "type": "string" },
+          "risk_notes": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "generated_by": { "type": "string" }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "requirementId": { "type": "string", "pattern": "^RQ-[0-9A-Za-z._-]+$" },
+    "sourceId": { "type": "string", "pattern": "^SRC-[0-9A-Za-z._-]+$" }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/build-manifest.schema.json",
+  "title": "Build Manifest",
+  "type": "object",
+  "required": ["status"],
+  "properties": {
+    "build_id": { "type": "string" },
+    "status": { "type": "string" },
+    "source_branch": { "type": "string" },
+    "source_commit": { "type": ["string", "null"] },
+    "generated_by": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "included_sections": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "output": { "type": "string" },
+    "release": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": true
+}

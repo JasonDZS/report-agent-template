@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/source-index.schema.json",
+  "title": "Source Index",
+  "type": "object",
+  "required": ["sources"],
+  "properties": {
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "type", "access"],
+        "properties": {
+          "id": { "$ref": "#/$defs/sourceId" },
+          "title": { "type": "string", "minLength": 1 },
+          "type": { "type": "string" },
+          "raw_path": { "type": ["string", "null"] },
+          "excerpt_paths": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "summary": { "type": "string" },
+          "related_requirements": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/requirementId" }
+          },
+          "access": {
+            "type": "string",
+            "enum": ["searchable", "restricted", "raw", "public", "placeholder"]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "generated_by": { "type": "string" }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "sourceId": { "type": "string", "pattern": "^SRC-[0-9A-Za-z._-]+$" },
+    "requirementId": { "type": "string", "pattern": "^RQ-[0-9A-Za-z._-]+$" }
+  }
+}

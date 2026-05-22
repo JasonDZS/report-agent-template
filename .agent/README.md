@@ -1,6 +1,7 @@
 # Agent Configuration
 
-This directory contains reusable instructions, schemas, and templates for Codex CLI workers.
+This directory contains reusable instructions, schemas, templates, and reference
+examples for Codex CLI workers.
 
 It also contains governance schemas for the orchestrator. The project-specific directive,
 decision, and escalation records themselves live under `governance/`.
@@ -19,5 +20,9 @@ Layering model:
 
 Governance records are compiled into this stack as task constraints, acceptance criteria,
 context-pack notes, reviewer checks, and human decision prompts.
+
+Examples under `.agent/examples/` are not active project state. They are copied
+there so the top-level runtime directories can remain clean in a freshly cloned
+workspace.
 
 Agents should not edit files in this directory unless assigned an explicit governance task.

@@ -1,4 +1,4 @@
-status: active
-phase: started
-last_event: Orchestrator started.
-updated_at: "2026-05-21T13:06:39Z"
+status: idle
+phase: initialized
+last_event: ""
+updated_at: null

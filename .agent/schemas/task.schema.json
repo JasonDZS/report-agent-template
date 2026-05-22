@@ -11,6 +11,7 @@
       "enum": [
         "requirement_extract",
         "outline_plan",
+        "section_task_plan",
         "section_write",
         "section_revision",
         "table_build",
@@ -70,6 +71,10 @@
         "resolved_escalations": {
           "type": "array",
           "items": { "$ref": "#/$defs/escalationId" }
+        },
+        "approvals": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/approvalId" }
         }
       },
       "additionalProperties": true
@@ -91,6 +96,10 @@
     "escalation_refs": {
       "type": "array",
       "items": { "$ref": "#/$defs/escalationId" }
+    },
+    "approval_refs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/approvalId" }
     },
     "continuation_policy": {
       "type": "object",
@@ -191,6 +200,7 @@
     "taskId": { "type": "string", "pattern": "^T-[0-9]{4,}$" },
     "directiveId": { "type": "string", "pattern": "^D-[0-9]{4,}$" },
     "decisionId": { "type": "string", "pattern": "^DEC-[0-9]{4,}$" },
-    "escalationId": { "type": "string", "pattern": "^E-[0-9]{4,}$" }
+    "escalationId": { "type": "string", "pattern": "^E-[0-9]{4,}$" },
+    "approvalId": { "type": "string", "pattern": "^APR-[0-9]{4,}$" }
   }
 }

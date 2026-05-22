@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/document-blueprint.schema.json",
+  "title": "Document Blueprint",
+  "type": "object",
+  "required": ["document_blueprint"],
+  "properties": {
+    "document_blueprint": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "string" },
+        "purpose": { "type": "string" },
+        "audience": { "type": "string" },
+        "success_criteria": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "metadata": { "type": "object" },
+        "information_layers": { "type": "object" },
+        "requirement_count": { "type": "integer", "minimum": 0 },
+        "source_refs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/sourceId" }
+        },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "generated_by": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "sourceId": { "type": "string", "pattern": "^SRC-[0-9A-Za-z._-]+$" }
+  }
+}

@@ -20,6 +20,7 @@ AGENTS.md                  Shared rules for all Codex agents
   prompts/                 Prompt templates for Codex CLI workers
   schemas/                 JSON Schemas for task/review artifacts
   templates/               Human-editable task and review templates
+  examples/                Non-runtime protocol examples
 scripts/                   Local helper scripts
 sources/                   Original input documents and extracted excerpts
 knowledge/                 Requirements, glossary, style, risk rules
